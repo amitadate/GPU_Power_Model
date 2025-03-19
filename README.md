@@ -210,6 +210,122 @@ The error varies significantly across different kernel implementations, with the
 | Strategy7 | 0.00          | 40.32           | 5.70                   |
 | Strategy9 | 0.00          | 40.46           | 5.65                   |
 
-## 8. Conclusion
+## 8. Energy Efficiency Analysis
+
+While power modeling focuses on predicting instantaneous power consumption, energy efficiency analysis addresses the total energy consumed to complete a task and various related metrics that help balance performance and energy consumption.
+
+### 8.1 Energy Consumption Metrics
+
+#### 8.1.1 Energy Consumption
+
+The total energy consumed by a kernel is calculated as:
+
+$Energy (Joules) = Power (Watts) \times Time (seconds)$
+
+This represents the area under the power-vs-time curve and is measured in Joules. Lower values indicate more energy-efficient implementations.
+
+#### 8.1.2 Energy-Delay Product (EDP)
+
+EDP combines energy consumption with performance considerations:
+
+$EDP = Energy \times Time = Power \times Time^2$
+
+This metric gives equal weight to energy efficiency and performance, measured in Joule-seconds. Lower values indicate better balance between energy and performance.
+
+#### 8.1.3 Energy-Delay² Product (ED²P)
+
+ED²P places greater emphasis on performance:
+
+$ED^2P = Energy \times Time^2 = Power \times Time^3$
+
+This metric is useful for performance-critical applications where speed is more important than pure energy efficiency, measured in Joule-seconds². Lower values are better.
+
+#### 8.1.4 Performance per Watt
+
+Another common metric is performance per watt:
+
+$Performance/Watt = \frac{1}{Energy} = \frac{1}{Power \times Time}$
+
+Higher values indicate better energy efficiency.
+
+### 8.2 Kernel Efficiency Results
+
+The analysis of the different histogram kernel implementations reveals significant variations in energy efficiency:
+
+| Kernel    | Power (W) | Time (s)  | Energy (J) | EDP (J·s)   | ED²P (J·s²)  |
+|-----------|-----------|-----------|------------|-------------|--------------|
+| Baseline  | 20.49     | 12.40     | 254.10     | 3150.89     | 39071.14     |
+| Strategy1 | 56.28     | 12.53     | 705.23     | 8836.76     | 110724.93    |
+| Strategy2 | 26.14     | 13.05     | 341.07     | 4450.09     | 58073.18     |
+| Strategy3 | 20.32     | 14.28     | 290.25     | 4145.82     | 59204.75     |
+| Strategy4 | 20.85     | 12.41     | 258.78     | 3212.48     | 39867.88     |
+| Strategy5 | 21.48     | 12.37     | 265.79     | 3288.57     | 40679.58     |
+| Strategy6 | 20.89     | 12.35     | 258.07     | 3188.12     | 39373.79     |
+| Strategy7 | 20.41     | 12.40     | 253.01     | 3136.58     | 38884.52     |
+| Strategy8 | 20.83     | 12.49     | 260.14     | 3248.67     | 40575.87     |
+| Strategy9 | 20.61     | 12.38     | 255.19     | 3159.23     | 39110.89     |
+
+Key observations:
+- Strategy7 (Linear Indexing, Optimized Shared Memory) achieves the lowest energy consumption (253.01 J)
+- Strategy7 also has the best EDP (3136.58 J·s) and ED²P (38884.52 J·s²)
+- Strategy1 (Private Histograms, Final Reduction) has significantly higher energy consumption (705.23 J) despite moderate execution time, likely due to its high memory bandwidth usage
+- Strategy6 has the fastest execution time (12.35 s) but is slightly less energy-efficient than Strategy7
+
+### 8.3 Pareto Efficiency Analysis
+
+A Pareto frontier analysis reveals the optimal trade-offs between execution time and energy consumption. Points on the Pareto frontier represent implementations that cannot be improved in one metric without degrading the other.
+
+In this analysis:
+- Strategy7 lies on the Pareto frontier, offering the best energy efficiency
+- Strategy6 also lies on the frontier, providing the best execution time
+- Strategy9 is near-optimal in both metrics
+- Strategy1 is significantly less efficient, consuming more than twice the energy of other implementations while offering no performance advantage
+
+### 8.4 Optimization Technique Impact on Energy
+
+Different optimization techniques show varying impacts on energy efficiency:
+
+| Technique                  | Avg Energy (J) | Avg EDP (J·s) | Avg Time (s) |
+|----------------------------|----------------|---------------|--------------|
+| Linear Indexing            | 253.01         | 3136.58       | 12.40        |
+| Optimized Shared Memory    | 253.01         | 3136.58       | 12.40        |
+| Global Memory Atomics      | 254.10         | 3150.89       | 12.40        |
+| Efficient Reduction        | 255.19         | 3159.23       | 12.38        |
+| Per-block Local Histogram  | 255.19         | 3159.23       | 12.38        |
+| Optimized Memory           | 255.19         | 3159.23       | 12.38        |
+| Direct Global Memory       | 258.07         | 3188.12       | 12.35        |
+| Optimized Tile Size        | 258.07         | 3188.12       | 12.35        |
+| Coalesced Access           | 258.96         | 3211.98       | 12.40        |
+| Bank Conflict Avoidance    | 258.78         | 3212.48       | 12.41        |
+| Padded Indexing            | 258.78         | 3212.48       | 12.41        |
+| Input Tiling               | 260.14         | 3248.67       | 12.49        |
+| Local Histogram            | 260.14         | 3248.67       | 12.49        |
+| Improved Memory Layout     | 260.14         | 3248.67       | 12.49        |
+| Memory Optimization        | 265.79         | 3288.57       | 12.37        |
+| Shared Memory              | 289.40         | 3711.49       | 13.03        |
+| Input Tile Loading         | 290.25         | 4145.82       | 14.28        |
+| Private Histograms         | 705.23         | 8836.76       | 12.53        |
+| Final Reduction            | 705.23         | 8836.76       | 12.53        |
+
+Key insights:
+- Linear Indexing and Optimized Shared Memory yield the best energy efficiency
+- Direct Global Memory and Optimized Tile Size deliver the best performance
+- Private Histograms with Final Reduction show the worst energy efficiency, likely due to memory traffic overheads
+- Shared Memory techniques show variable results, with effectiveness highly dependent on implementation details
+
+### 8.5 Relationship Between Power Models and Energy Efficiency
+
+The accuracy of power models directly impacts the ability to identify energy-efficient implementations:
+
+1. **Basic power models** can identify high-level trends but may miss subtle optimizations, with ~40% error margins making fine-grained comparisons difficult
+2. **DVFS-aware models** improve accuracy for implementations with significant frequency variations
+3. **Memory-aware models** (with ~8.5% error) provide the most reliable basis for energy efficiency optimization, especially for memory-intensive workloads
+
+With the memory-aware model, energy efficiency predictions are accurate enough to guide optimization choices with high confidence, enabling developers to target specific points on the energy-performance Pareto frontier.
+
+## 9. Conclusion
+
+
+## 9. Conclusion
 
 This approach provides a robust foundation for accurately predicting GPU power consumption across a wide range of workloads and operating conditions, enabling more effective power-aware optimization of GPU kernels.
