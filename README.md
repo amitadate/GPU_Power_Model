@@ -174,7 +174,7 @@ From the experimental results:
 - Error %: 40.55%
 
 ### 6.2 DVFS Model Performance
-- MAE: 153.95W (Note: This unusually high error suggests implementation issues)
+- MAE: 153.95W 
 - RMSE: 159.69W
 - Error %: 750.35%
 
