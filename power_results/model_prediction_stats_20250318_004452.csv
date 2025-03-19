@@ -1,0 +1,2 @@
+kernel,samples,avg_power,avg_utilization,avg_clock,basic_prediction,basic_mae,basic_rmse,basic_error_pct,dvfs_prediction,dvfs_mae,dvfs_rmse,dvfs_error_pct
+Baseline,5,84.078,100.0,1935.0,194.9494915246824,110.8714915246824,113.78313429022651,152.6442945502136,108.375,29.889,35.27687946800283,45.2763013607033

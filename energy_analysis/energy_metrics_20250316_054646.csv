@@ -1,0 +1,2 @@
+kernel,power_watts,execution_time_sec,energy_joules,edp,ed2p,energy_normalized,edp_normalized,ed2p_normalized,performance_per_watt,performance_per_watt_normalized
+Strategy9,26.64271317829459,0.49099799999999993,13.081518885116285,6.422999609554325,3.153679962291954,1.0,1.0,1.0,0.07644372253574977,1.0

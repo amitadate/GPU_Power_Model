@@ -1,0 +1,2 @@
+kernel,avg_power_watts,max_power_watts,avg_clock_mhz,execution_time_sec,energy_joules,edp,energy_normalized,edp_normalized
+Strategy9,27.096245210727968,123.46,576.4942528735633,0.487578,13.21153304735632,6.4416528601639005,1.0,1.0
