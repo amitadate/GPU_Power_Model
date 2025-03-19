@@ -281,39 +281,8 @@ In this analysis:
 - Strategy9 is near-optimal in both metrics
 - Strategy1 is significantly less efficient, consuming more than twice the energy of other implementations while offering no performance advantage
 
-### 8.4 Optimization Technique Impact on Energy
 
-Different optimization techniques show varying impacts on energy efficiency:
-
-| Technique                  | Avg Energy (J) | Avg EDP (J·s) | Avg Time (s) |
-|----------------------------|----------------|---------------|--------------|
-| Linear Indexing            | 253.01         | 3136.58       | 12.40        |
-| Optimized Shared Memory    | 253.01         | 3136.58       | 12.40        |
-| Global Memory Atomics      | 254.10         | 3150.89       | 12.40        |
-| Efficient Reduction        | 255.19         | 3159.23       | 12.38        |
-| Per-block Local Histogram  | 255.19         | 3159.23       | 12.38        |
-| Optimized Memory           | 255.19         | 3159.23       | 12.38        |
-| Direct Global Memory       | 258.07         | 3188.12       | 12.35        |
-| Optimized Tile Size        | 258.07         | 3188.12       | 12.35        |
-| Coalesced Access           | 258.96         | 3211.98       | 12.40        |
-| Bank Conflict Avoidance    | 258.78         | 3212.48       | 12.41        |
-| Padded Indexing            | 258.78         | 3212.48       | 12.41        |
-| Input Tiling               | 260.14         | 3248.67       | 12.49        |
-| Local Histogram            | 260.14         | 3248.67       | 12.49        |
-| Improved Memory Layout     | 260.14         | 3248.67       | 12.49        |
-| Memory Optimization        | 265.79         | 3288.57       | 12.37        |
-| Shared Memory              | 289.40         | 3711.49       | 13.03        |
-| Input Tile Loading         | 290.25         | 4145.82       | 14.28        |
-| Private Histograms         | 705.23         | 8836.76       | 12.53        |
-| Final Reduction            | 705.23         | 8836.76       | 12.53        |
-
-Key insights:
-- Linear Indexing and Optimized Shared Memory yield the best energy efficiency
-- Direct Global Memory and Optimized Tile Size deliver the best performance
-- Private Histograms with Final Reduction show the worst energy efficiency, likely due to memory traffic overheads
-- Shared Memory techniques show variable results, with effectiveness highly dependent on implementation details
-
-### 8.5 Relationship Between Power Models and Energy Efficiency
+### 8.4 Relationship Between Power Models and Energy Efficiency
 
 The accuracy of power models directly impacts the ability to identify energy-efficient implementations:
 
@@ -322,9 +291,6 @@ The accuracy of power models directly impacts the ability to identify energy-eff
 3. **Memory-aware models** (with ~8.5% error) provide the most reliable basis for energy efficiency optimization, especially for memory-intensive workloads
 
 With the memory-aware model, energy efficiency predictions are accurate enough to guide optimization choices with high confidence, enabling developers to target specific points on the energy-performance Pareto frontier.
-
-## 9. Conclusion
-
 
 ## 9. Conclusion
 
