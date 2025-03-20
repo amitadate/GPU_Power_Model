@@ -1,0 +1,25 @@
+Start time: 1742456508.197875414
+opt_2dhisto.cu(94): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+opt_2dhisto.cu(125): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+
+opt_2dhisto.cu(155): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+
+opt_2dhisto.cu(247): warning #550-D: variable "local_histogram" was set but never used
+      __attribute__((shared)) uint32_t local_histogram[256];
+                                       ^
+
+opt_2dhisto.cu(278): warning #177-D: variable "input_tile" was declared but never referenced
+      __attribute__((shared)) uint32_t input_tile[1024];
+                                       ^
+
+./histogram-data-collector.sh: line 88: ./test_harness: No such file or directory
+End time: 1742456509.309291173

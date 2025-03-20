@@ -1,0 +1,56 @@
+===== GPU POWER MODEL SUMMARY =====
+
+System Information:
+NVIDIA GeForce RTX 2060 SUPER, 570.86.15, 90.06.44.C0.03, 8192 MiB, 175.00 W, 125.00 W, 215.00 W
+
+CPU(s):              8
+On-line CPU(s) list: 0-7
+Thread(s) per core:  1
+Model name:          Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz
+CPU MHz:             3000.000
+NUMA node0 CPU(s):   0-7
+
+
+1. Basic Power Model
+-----------------------
+P = -0.6766 × utilization + 111.4729
+RMSE: 0.5686 W, R²: 0.0674
+
+2. DVFS-Aware Linear Model
+--------------------------
+P = -0.1683 × utilization + -0.080654 × f + 186.4242
+RMSE: 0.4671 W, R²: 0.3705
+
+3. DVFS-Aware Cubic Model
+------------------------
+P = -0.1666 × utilization + -36.2521 × (f/fmax)³ + 115.0077
+fmax = 1334 MHz
+RMSE: 0.4667 W, R²: 0.3716
+
+4. DVFS-Aware Interaction Model
+------------------------------
+P = 224.0181 × util + 10.577691 × f + -0.16911632 × (util × f) + -13942.5913
+RMSE: 0.4433 W, R²: 0.4330
+
+5. Memory-Aware Cubic Model
+--------------------------
+P = 29.3929 × util + -12422.33959152 × f³ × M + 66.565022 × f + -60655.5752
+where M = 1 + 0.5 × (memory_utilization)
+RMSE: 0.2387 W, R²: 0.8357
+
+6. Memory-Aware Polynomial Model
+-------------------------------
+P = Σ(wi × (featurei) × (featurej)) + γ
+Top coefficients:
+  AvgSMClock AvgMemUtil: -15.773070
+  AvgGPUUtil AvgSMClock: 3.225449
+  AvgSMClock: 1.703534
+  AvgGPUUtil^2: -0.726445
+  AvgGPUUtil AvgMemUtil: -0.089699
+Intercept (γ): -101951.6586
+RMSE: 0.2146 W, R²: 0.8672
+
+===== MODEL COMPARISON =====
+
+Best model based on RMSE: memory_polynomial (RMSE = 0.2146)
+Best model based on R²: memory_polynomial (R² = 0.8672)

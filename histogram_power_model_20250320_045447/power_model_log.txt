@@ -1,0 +1,50 @@
+Loading data from histogram_data_summary.csv
+Data loaded: 9 rows with 10 columns
+   Strategy ExecutionTime  AvgGPUUtil  ...  AvgSMClock  AvgMemClock MemoryUsedMB
+0         0   iterations)     63.1818  ...     1333.64      4475.18     0.196467
+1         2   iterations)     62.7273  ...     1330.91      4512.00     0.196200
+2         3   iterations)     63.1818  ...     1330.91      4512.00     0.196200
+3         4   iterations)     62.7273  ...     1324.09      4512.00     0.196200
+4         5   iterations)     63.1818  ...     1322.73      4512.00     0.196999
+
+[5 rows x 10 columns]
+
+3.1 Building Basic Power Model
+Basic Power Model: P = -0.6766 × utilization + 111.4729
+RMSE: 0.5686 W, R²: 0.0674
+
+3.2.1 Building DVFS-Aware Linear Power Model
+DVFS Linear Model: P = -0.1683 × utilization + -0.080654 × f + 186.4242
+RMSE: 0.4671 W, R²: 0.3705
+
+3.2.2 Building DVFS-Aware Cubic Power Model
+DVFS Cubic Model: P = -0.1666 × utilization + -36.2521 × (f/fmax)³ + 115.0077
+RMSE: 0.4667 W, R²: 0.3716
+Maximum Clock: 1334 MHz
+
+3.2.3 Building DVFS-Aware Interaction Power Model
+DVFS Interaction Model: P = 224.0181 × util + 10.577691 × f + -0.16911632 × (util × f) + -13942.5913
+RMSE: 0.4433 W, R²: 0.4330
+
+3.3.1 Building Memory-Aware Cubic Power Model
+Memory-Aware Cubic Model: P = 29.3929 × util + -12422.33959152 × f³ × M + 66.565022 × f + -60655.5752
+RMSE: 0.2387 W, R²: 0.8357
+
+3.3.2 Building Memory-Aware Polynomial Model
+Polynomial features: ['AvgGPUUtil', 'AvgSMClock', 'AvgMemUtil', 'AvgGPUUtil^2', 'AvgGPUUtil AvgSMClock', 'AvgGPUUtil AvgMemUtil', 'AvgSMClock^2', 'AvgSMClock AvgMemUtil', 'AvgMemUtil^2']
+Top coefficients:
+  AvgSMClock AvgMemUtil: -15.773070
+  AvgGPUUtil AvgSMClock: 3.225449
+  AvgSMClock: 1.703534
+  AvgGPUUtil^2: -0.726445
+  AvgGPUUtil AvgMemUtil: -0.089699
+  AvgSMClock^2: -0.059604
+  AvgMemUtil^2: -0.006819
+  AvgGPUUtil: -0.005770
+  AvgMemUtil: -0.001154
+Intercept (γ): -101951.6586
+Memory-Aware Polynomial Model RMSE: 0.2146 W, R²: 0.8672
+
+Model Comparison:
+Best model based on RMSE: memory_polynomial (RMSE = 0.2146)
+Best model based on R²: memory_polynomial (R² = 0.8672)

@@ -1,0 +1,147 @@
+Seed 0 with Strategy 9:
+opt_2dhisto.cu(94): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(125): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(155): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(247): warning #550-D: variable "local_histogram" was set but never used
+      __attribute__((shared)) uint32_t local_histogram[256];
+                                       ^
+--
+opt_2dhisto.cu(278): warning #177-D: variable "input_tile" was declared but never referenced
+      __attribute__((shared)) uint32_t input_tile[1024];
+                                       ^
+------------------------------------------------------
+Seed 42 with Strategy 9:
+opt_2dhisto.cu(94): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(125): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(155): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(247): warning #550-D: variable "local_histogram" was set but never used
+      __attribute__((shared)) uint32_t local_histogram[256];
+                                       ^
+--
+opt_2dhisto.cu(278): warning #177-D: variable "input_tile" was declared but never referenced
+      __attribute__((shared)) uint32_t input_tile[1024];
+                                       ^
+------------------------------------------------------
+Seed 100 with Strategy 9:
+opt_2dhisto.cu(94): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(125): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(155): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(247): warning #550-D: variable "local_histogram" was set but never used
+      __attribute__((shared)) uint32_t local_histogram[256];
+                                       ^
+--
+opt_2dhisto.cu(278): warning #177-D: variable "input_tile" was declared but never referenced
+      __attribute__((shared)) uint32_t input_tile[1024];
+                                       ^
+------------------------------------------------------
+Seed 500 with Strategy 9:
+opt_2dhisto.cu(94): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(125): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(155): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(247): warning #550-D: variable "local_histogram" was set but never used
+      __attribute__((shared)) uint32_t local_histogram[256];
+                                       ^
+--
+opt_2dhisto.cu(278): warning #177-D: variable "input_tile" was declared but never referenced
+      __attribute__((shared)) uint32_t input_tile[1024];
+                                       ^
+------------------------------------------------------
+Seed 1000 with Strategy 9:
+opt_2dhisto.cu(94): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(125): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(155): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(247): warning #550-D: variable "local_histogram" was set but never used
+      __attribute__((shared)) uint32_t local_histogram[256];
+                                       ^
+--
+opt_2dhisto.cu(278): warning #177-D: variable "input_tile" was declared but never referenced
+      __attribute__((shared)) uint32_t input_tile[1024];
+                                       ^
+------------------------------------------------------
+Seed 1500 with Strategy 9:
+opt_2dhisto.cu(94): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(125): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(155): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(247): warning #550-D: variable "local_histogram" was set but never used
+      __attribute__((shared)) uint32_t local_histogram[256];
+                                       ^
+--
+opt_2dhisto.cu(278): warning #177-D: variable "input_tile" was declared but never referenced
+      __attribute__((shared)) uint32_t input_tile[1024];
+                                       ^
+------------------------------------------------------
+Seed 2000 with Strategy 9:
+opt_2dhisto.cu(94): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(125): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(155): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+--
+opt_2dhisto.cu(247): warning #550-D: variable "local_histogram" was set but never used
+      __attribute__((shared)) uint32_t local_histogram[256];
+                                       ^
+--
+opt_2dhisto.cu(278): warning #177-D: variable "input_tile" was declared but never referenced
+      __attribute__((shared)) uint32_t input_tile[1024];
+                                       ^
+------------------------------------------------------

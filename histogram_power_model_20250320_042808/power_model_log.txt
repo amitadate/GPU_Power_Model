@@ -1,0 +1,41 @@
+Loading data from histogram_data_summary.csv
+Data loaded: 9 rows with 10 columns
+   Strategy ExecutionTime  AvgGPUUtil  ...  AvgSMClock  AvgMemClock MemoryUsedMB
+0         0   iterations)     62.7273  ...     1333.64      4475.18     0.196555
+1         2   iterations)     62.7273  ...     1328.18      4512.00     0.197177
+2         3   iterations)     62.9091  ...     1324.09      4512.00     0.196467
+3         4   iterations)     63.1818  ...     1322.73      4512.00     0.196200
+4         5   iterations)     62.7273  ...     1322.73      4512.00     0.196200
+
+[5 rows x 10 columns]
+
+3.1 Building Basic Power Model
+Basic Power Model: P = 2.2874 × utilization + -75.0581
+RMSE: 0.9653 W, R²: 0.1849
+
+3.2.1 Building DVFS-Aware Linear Power Model
+DVFS Linear Model: P = 0.0351 × utilization + -0.275323 × f + 431.3562
+RMSE: 0.4028 W, R²: 0.8580
+
+3.2.2 Building DVFS-Aware Cubic Power Model
+DVFS Cubic Model: P = 0.0351 × utilization + -123.5660 × (f/fmax)³ + 187.7318
+RMSE: 0.4011 W, R²: 0.8593
+Maximum Clock: 1334 MHz
+
+3.2.3 Building DVFS-Aware Interaction Power Model
+DVFS Interaction Model: P = -474.7370 × util + -22.789887 × f + 0.35893710 × (util × f) + 30211.7299
+RMSE: 0.4019 W, R²: 0.8587
+
+3.3.1 Building Memory-Aware Cubic Power Model
+Memory-Aware Cubic Model: P = 1.9389 × util + -766.84774598 × f³ × M + 3.847258 × f + -3340.7263
+RMSE: 0.3861 W, R²: 0.8696
+
+3.3.2 Building Memory-Aware Polynomial Model
+Traceback (most recent call last):
+  File "./build_power_models.py", line 505, in <module>
+    main()
+  File "./build_power_models.py", line 450, in main
+    models['memory_polynomial'] = build_memory_polynomial_model(data)
+  File "./build_power_models.py", line 326, in build_memory_polynomial_model
+    feature_names = poly.get_feature_names_out(features)
+AttributeError: 'PolynomialFeatures' object has no attribute 'get_feature_names_out'

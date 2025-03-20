@@ -1,0 +1,82 @@
+Start time: 1742459862.683917662
+Starting histogram tests with all strategies
+    Timing 'ref_2dhisto' started
+        GetTimeOfDay Time (for 1000 iterations) = 15.519
+        Clock Time        (for 1000 iterations) = 15.5062
+    Timing 'ref_2dhisto' ended
+
+=== Running Histogram Strategy 0 ===
+device input size is 67108864
+    Timing 'opt_2dhisto_strategy_0' started
+        GetTimeOfDay Time (for 1000 iterations) = 3.425
+        Clock Time        (for 1000 iterations) = 3.42347
+    Timing 'opt_2dhisto_strategy_0' ended
+    Strategy 0 Test PASSED
+
+=== Running Histogram Strategy 2 ===
+device input size is 67108864
+    Timing 'opt_2dhisto_strategy_2' started
+        GetTimeOfDay Time (for 1000 iterations) = 9.295
+        Clock Time        (for 1000 iterations) = 9.29039
+    Timing 'opt_2dhisto_strategy_2' ended
+    Strategy 2 Test PASSED
+
+=== Running Histogram Strategy 3 ===
+device input size is 67108864
+    Timing 'opt_2dhisto_strategy_3' started
+        GetTimeOfDay Time (for 1000 iterations) = 3.4
+        Clock Time        (for 1000 iterations) = 3.39819
+    Timing 'opt_2dhisto_strategy_3' ended
+    Strategy 3 Test PASSED
+
+=== Running Histogram Strategy 4 ===
+device input size is 67108864
+    Timing 'opt_2dhisto_strategy_4' started
+        GetTimeOfDay Time (for 1000 iterations) = 3.4
+        Clock Time        (for 1000 iterations) = 3.39837
+    Timing 'opt_2dhisto_strategy_4' ended
+    Strategy 4 Test PASSED
+
+=== Running Histogram Strategy 5 ===
+device input size is 67108864
+    Timing 'opt_2dhisto_strategy_5' started
+        GetTimeOfDay Time (for 1000 iterations) = 3.4
+        Clock Time        (for 1000 iterations) = 3.39865
+    Timing 'opt_2dhisto_strategy_5' ended
+    Strategy 5 Test PASSED
+
+=== Running Histogram Strategy 6 ===
+device input size is 67108864
+    Timing 'opt_2dhisto_strategy_6' started
+        GetTimeOfDay Time (for 1000 iterations) = 3.406
+        Clock Time        (for 1000 iterations) = 3.40399
+    Timing 'opt_2dhisto_strategy_6' ended
+    Strategy 6 Test PASSED
+
+=== Running Histogram Strategy 7 ===
+device input size is 67108864
+    Timing 'opt_2dhisto_strategy_7' started
+        GetTimeOfDay Time (for 1000 iterations) = 3.406
+        Clock Time        (for 1000 iterations) = 3.40419
+    Timing 'opt_2dhisto_strategy_7' ended
+    Strategy 7 Test PASSED
+
+=== Running Histogram Strategy 8 ===
+device input size is 67108864
+    Timing 'opt_2dhisto_strategy_8' started
+        GetTimeOfDay Time (for 1000 iterations) = 3.4
+        Clock Time        (for 1000 iterations) = 3.39807
+    Timing 'opt_2dhisto_strategy_8' ended
+    Strategy 8 Test PASSED
+
+=== Running Histogram Strategy 9 ===
+device input size is 67108864
+    Timing 'opt_2dhisto_strategy_9' started
+        GetTimeOfDay Time (for 1000 iterations) = 0.453
+        Clock Time        (for 1000 iterations) = 0.453148
+    Timing 'opt_2dhisto_strategy_9' ended
+    Strategy 9 Test PASSED
+
+All histogram tests completed.
+End time: 1742459913.107326399
+Duration: 50.423408737 seconds

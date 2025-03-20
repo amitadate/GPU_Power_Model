@@ -1,0 +1,9 @@
+System Information:
+NVIDIA GeForce RTX 2060 SUPER, 570.86.15, 90.06.44.C0.03, 8192 MiB, 175.00 W, 125.00 W, 215.00 W
+
+CPU(s):              8
+On-line CPU(s) list: 0-7
+Thread(s) per core:  1
+Model name:          Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz
+CPU MHz:             4592.576
+NUMA node0 CPU(s):   0-7

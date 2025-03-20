@@ -1,0 +1,60 @@
+Start time: 1742458239.919832370
+opt_2dhisto.cu(348): warning #127-D: expected a statement
+      }
+      ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+opt_2dhisto.cu(80): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+opt_2dhisto.cu(108): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+
+opt_2dhisto.cu(136): warning #550-D: variable "shared_hist" was set but never used
+      __attribute__((shared)) uint32_t shared_hist[255];
+                                       ^
+
+opt_2dhisto.cu(225): warning #550-D: variable "local_histogram" was set but never used
+      __attribute__((shared)) uint32_t local_histogram[256];
+                                       ^
+
+opt_2dhisto.cu(257): warning #177-D: variable "input_tile" was declared but never referenced
+      __attribute__((shared)) uint32_t input_tile[1024];
+                                       ^
+
+opt_2dhisto.cu(348): warning #127-D: expected a statement
+      }
+      ^
+
+opt_2dhisto.cu(301): warning #177-D: variable "blockDims" was declared but never referenced
+      dim3 blockDims(32, 32);
+           ^
+
+opt_2dhisto.cu(302): warning #177-D: variable "sharedMemSize" was declared but never referenced
+      size_t sharedMemSize = 255 * sizeof(uint32_t);
+             ^
+
+opt_2dhisto.cu(308): warning #177-D: variable "rectangle_width" was declared but never referenced
+      size_t rectangle_width = (3984 / num_segments_width);
+             ^
+
+opt_2dhisto.cu(309): warning #177-D: variable "rectangle_height" was declared but never referenced
+      size_t rectangle_height = (4096 / num_segments_height);
+             ^
+
+opt_2dhisto.cu(310): warning #177-D: variable "strategy1BlockDims" was declared but never referenced
+      dim3 strategy1BlockDims(1, 1);
+           ^
+
+opt_2dhisto.cu: In function ‘void opt_2dhisto_strategy(uint32_t*, uint32_t*, int)’:
+opt_2dhisto.cu:348:1: error: expected primary-expression before ‘}’ token
+     }
+ ^
+make: *** [../../common/common.mk:413: obj/x86_64/release/opt_2dhisto.cu.o] Error 1
+./histogram-data-collector.sh: line 88: ./test_harness: No such file or directory
+End time: 1742458240.951768811

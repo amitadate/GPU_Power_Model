@@ -1,17 +1,11 @@
-################################################################################
+###############################################################################
 #
-# Copyright 1993-2006 NVIDIA Corporation.  All rights reserved.
+# Copyright 1993-2010 NVIDIA Corporation.  All rights reserved.
 #
 # NOTICE TO USER:   
 #
 # This source code is subject to NVIDIA ownership rights under U.S. and 
 # international Copyright laws.  
-#
-# This software and the information contained herein is PROPRIETARY and 
-# CONFIDENTIAL to NVIDIA and is being provided under the terms and 
-# conditions of a Non-Disclosure Agreement.  Any reproduction or 
-# disclosure to any third party without the express written consent of 
-# NVIDIA is prohibited.     
 #
 # NVIDIA MAKES NO REPRESENTATION ABOUT THE SUITABILITY OF THIS SOURCE 
 # CODE FOR ANY PURPOSE.  IT IS PROVIDED "AS IS" WITHOUT EXPRESS OR 
@@ -33,22 +27,48 @@
 # 227.7202-4 (JUNE 1995), all U.S. Government End Users acquire the 
 # source code with only those rights set forth herein.
 #
-################################################################################
+###############################################################################
 #
-# Build script for project
+# GPU Computing SDK (CUDA C)
 #
-################################################################################
+###############################################################################
 
-# Add source files here
-EXECUTABLE	:= lab3
+ifeq ($(emu), 1)
+  PROJECTS := $(shell find src -name Makefile | xargs grep -L 'USEDRVAPI' | xargs grep -L 'USENEWINTEROP' )
+else
+  PROJECTS := $(shell find src -name Makefile)
+endif
 
-# Cuda source files (compiled with cudacc)
-CUFILES		:= opt_2dhisto.cu
+%.ph_build : lib/libcutil.so lib/libparamgl.so lib/librendercheckgl.so shared/libshrutil.so
+	$(MAKE) -C $(dir $*) $(MAKECMDGOALS)
 
-# C/C++ source files (compiled with gcc / c++)
-CCFILES		:= test_harness.cpp util.cpp ref_2dhisto.cpp
+%.ph_clean : 
+	$(MAKE) -C $(dir $*) clean $(USE_DEVICE)
 
-################################################################################
-# Rules and targets
+%.ph_clobber :
+	$(MAKE) -C $(dir $*) clobber $(USE_DEVICE)
 
-include ../../common/common.mk
+all:  $(addsuffix .ph_build,$(PROJECTS))
+	@echo "Finished building all"
+
+lib/libcutil.so:
+	@$(MAKE) -C common
+
+lib/libparamgl.so:
+	@$(MAKE) -C common -f Makefile_paramgl
+
+lib/librendercheckgl.so:
+	@$(MAKE) -C common -f Makefile_rendercheckgl
+
+shared/libshrutil.so:
+	@$(MAKE) -C ../shared/ 
+
+tidy:
+	@find * | egrep "#" | xargs rm -f
+	@find * | egrep "\~" | xargs rm -f
+
+clean: tidy $(addsuffix .ph_clean,$(PROJECTS))
+	@$(MAKE) -C common clean
+
+clobber: clean $(addsuffix .ph_clobber,$(PROJECTS))
+	@$(MAKE) -C common clobber
