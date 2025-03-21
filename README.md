@@ -18,7 +18,7 @@ This project is focused on training a power model using CUDA and Python. The mod
 
 ## Steps
 
-clone the repository to your local machine. Replace the URL with the actual repository URL.
+clone the repository to your Wilkinson machine. Replace the URL with the actual repository URL.
 
 ```bash
 git clone https://github.com/yourusername/cuda-lab3.git
