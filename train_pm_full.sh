@@ -1,9 +1,8 @@
 #!/bin/bash
 
 # Complete Histogram Power Model Script
-# This script collects data, builds power models, and generates visualizations for the histogram workload
 
-# Set paths - update these to match your environment
+# Set paths
 LAB3_DIR="/home/asa5078/368/experiment_lab3/pushed_lab3/labs"
 cd $LAB3_DIR
 
@@ -67,8 +66,7 @@ run_strategy() {
     START_TIME=$(date +%s.%N)
     echo "Start time: $START_TIME" > "$OUTPUT_FILE"
     
-    # Run the histogram program with the specific strategy
-    # This assumes the opt_2dhisto_strategy function in opt_2dhisto.cu is properly implemented
+    #load executable
     STRATEGY=$strategy ./bin/linux/release/lab3 >> "$OUTPUT_FILE" 2>&1
     
     # Record end time
@@ -86,21 +84,20 @@ run_strategy() {
     echo "Strategy $strategy complete"
 }
 
-# Run all strategies (skip strategy 1 as it's too slow)
+# Run all strategies 
 echo "Running histogram strategies..."
 for strategy in 0 2 3 4 5 6 7 8 9; do
     run_strategy $strategy
-    # Cool down period
+    # Cool down period after each run
     echo "Cooling down for 5 seconds..."
     sleep 5
 done
 
-# Create CSV summary file for the collected data
+
 echo "Creating data summary file..."
 {
     echo "Strategy,ExecutionTime,AvgGPUUtil,AvgMemUtil,AvgPower,MaxPower,AvgTemp,AvgSMClock,AvgMemClock,MemoryUsedMB"
     
-    # Process each strategy's data
     for strategy in 0 2 3 4 5 6 7 8 9; do
         METRICS_FILE="${OUTPUT_DIR}/strategy_${strategy}_metrics.csv"
         OUTPUT_FILE="${OUTPUT_DIR}/strategy_${strategy}_output.txt"
@@ -127,7 +124,7 @@ echo ""
 echo "PHASE 2: POWER MODEL BUILDING"
 echo "============================"
 
-# Create a Python script to build the power models
+# Create a Python script 
 cat > "${OUTPUT_DIR}/build_power_models.py" << 'PYTHON_SCRIPT'
 #!/usr/bin/env python3
 
@@ -148,7 +145,7 @@ def load_data(csv_file):
     print(f"Loading data from {csv_file}")
     data = pd.read_csv(csv_file)
     
-    # Basic data cleaning and preprocessing
+    
     for col in data.columns:
         if data[col].dtype == object:
             try:
@@ -649,7 +646,7 @@ echo "Building power models..."
 cd $OUTPUT_DIR
 python3 ./build_power_models.py histogram_data_summary.csv > power_model_log.txt 2>&1
 
-# Check if the script ran successfully
+# Check script
 if [ $? -eq 0 ]; then
     echo "Power models built successfully!"
     echo "Output files:"
